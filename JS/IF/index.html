@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                        'accent': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        teal: '#38b2ac',
+                        orange: '#ed8936',
+                        addpurple: '#805ad5',
+                        lightBlue: '#a0e7e5',
+                        addpink: '#ffb3c1',
+                        mintGreen: '#a7f3d0',
+                        navyBlue: '#1a202c',
+                        yellow: '#f6e05e',
+                        lightGray: '#edf2f7'
+
+                    },
+                },
+
+            },
+            plugins: [
+                function ({ addUtilities }) {
+                    const newUtilities = {
+                        '::selection': {
+                            backgroundColor: '#ffb3c1',
+                        },
+                    };
+                    addUtilities(newUtilities, ['responsive', 'hover']);
+                },
+            ],
+        }
+    </script>
+</head>
+
+<body>
+    <div class="flex my-20 justify-evenly">
+        <div class="w-1/2 md:w-1/3  bg-blue-200 rounded-lg p-4">
+            <label for="">Enter Your Grade:</label>
+            <input type="text" id="gradeValue"
+                class="w-full p-2 rounded-lg outline-none focus:border-blue-400 focus:border-2 my-3"
+                placeholder="Your Grad ...">
+            <button id="calculateGradeBtn" class="w-full py-2 text-white rounded-lg bg-addpurple">Calculate</button>
+        </div>
+        <div class="w-1/2 md:w-1/3  bg-addpink rounded-lg p-4">Your Grade:
+            <h3 id="gradeOutput"></h3>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/671c6ac721.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
