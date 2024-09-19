@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Picker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                        'accent': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        teal: '#38b2ac',
+                        orange: '#ed8936',
+                        addpink: '#805ad5',
+                        lightBlue: '#a0e7e5',
+                        mintGreen: '#a7f3d0',
+                        navyBlue: '#1a202c',
+                        yellow: '#f6e05e',
+                        lightGray: '#edf2f7'
+                    },
+                },
+            },
+            plugins: [
+                function ({ addUtilities }) {
+                    const newUtilities = {
+                        '::selection': {
+                            backgroundColor: '#ffb3c1',
+                        },
+                    };
+                    addUtilities(newUtilities, ['responsive', 'hover']);
+                },
+            ],
+        }
+    </script>
+</head>
+
+<body class="bg-lightGray font-sans">
+    <div class="flex my-20 justify-center">
+        <div class="space-x-4">
+            <select id="day"
+                class="py-2 px-4 rounded-full bg-white border border-gray-300 focus:ring-teal focus:border-teal">
+                <option value="" disabled selected>Day</option>
+            </select>
+            <select id="month"
+                class="py-2 px-4 rounded-full bg-white border border-gray-300 focus:ring-teal focus:border-teal">
+
+                <option value="" disabled selected>Month</option>
+            </select>
+            <select id="year"
+                class="py-2 px-4 rounded-full bg-white border border-gray-300 focus:ring-teal focus:border-teal">
+                <option value="" disabled selected>Year</option>
+            </select>
+        </div>
+    </div>
+    <script>
+        const dayDropdown = document.getElementById("day");
+        for (let day = 1; day <= 31; day++) {
+            const option = document.createElement("option");
+            option.value = day;
+            option.textContent = day;
+            dayDropdown.appendChild(option);
+        }
+
+        const monthDropdown = document.getElementById("month");
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        monthNames.forEach((month, index) => {
+            const option = document.createElement("option");
+            option.value = index + 1;
+            option.textContent = month;
+            monthDropdown.appendChild(option);
+        });
+        const yearDropdown = document.getElementById("year");
+        const currentYear = new Date().getFullYear();
+        for (let year = currentYear; year >= 1930; year--) {
+            const option = document.createElement("option");
+            option.value = year;
+            option.textContent = year;
+            yearDropdown.appendChild(option);
+        }
+    </script>
+</body>
+
+</html>
